@@ -41,3 +41,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/VSExtensionsImportExport/bin/Debug
+/VSExtensionsImportExport/obj/Debug
+*.suo
+*.user
