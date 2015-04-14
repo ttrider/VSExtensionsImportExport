@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.ComponentModel.Design;
 using System.ServiceModel;
@@ -15,7 +16,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using TTRider.VSExtensionsImportExport.ExtensionService;
-using System.Net.Http;
+//using System.Net.Http;
 
 namespace TTRider.VSExtensionsImportExport
 {
@@ -454,4 +455,13 @@ namespace TTRider.VSExtensionsImportExport
         }
 
     }
+
+    internal static class Utilities
+    {
+        public static void WriteLine(this IVsOutputWindowPane pane, string format, params object[] args)
+        {
+            pane.OutputStringThreadSafe(string.Format(format, args) + "\r\n");
+        }
+    }
+
 }
