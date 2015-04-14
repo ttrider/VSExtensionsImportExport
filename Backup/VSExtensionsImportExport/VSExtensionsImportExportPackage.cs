@@ -15,7 +15,6 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using TTRider.VSExtensionsImportExport.ExtensionService;
-using System.Net.Http;
 
 namespace TTRider.VSExtensionsImportExport
 {
@@ -41,7 +40,6 @@ namespace TTRider.VSExtensionsImportExport
     public sealed class VSExtensionsImportExportPackage : Package
     {
         static readonly Guid outputPane = new Guid("{FCC482B4-E7CC-4120-B9D5-04A45CB90A68}");
-        IVsExtensionManager vsextm;
 
         /// <summary>
         /// Default constructor of the package.
@@ -67,7 +65,7 @@ namespace TTRider.VSExtensionsImportExport
         /// </summary>
         protected override void Initialize()
         {
-            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
+            Debug.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
 
             var mcs = GetService(typeof(IMenuCommandService)) as OleMenuCommandService;
@@ -76,9 +74,6 @@ namespace TTRider.VSExtensionsImportExport
                 mcs.AddCommand(new MenuCommand(OnExportExtensions, new CommandID(GuidList.guidVSExtensionsImportExportCmdSet, (int)PkgCmdIDList.cmdidExportExtensionList)));
                 mcs.AddCommand(new MenuCommand(OnImportExtensions, new CommandID(GuidList.guidVSExtensionsImportExportCmdSet, (int)PkgCmdIDList.cmdidImportExtensionList)));
             }
-
-            this.vsextm = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
-
         }
         #endregion
 
@@ -145,7 +140,7 @@ namespace TTRider.VSExtensionsImportExport
                 var exs = new ExtensionSet();
 
 
-                var vsextm = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
+                var vsextm = (IVsExtensionManager) GetService(typeof (SVsExtensionManager));
                 if (vsextm != null)
                 {
                     exs.MachineName = Environment.MachineName;
@@ -175,7 +170,7 @@ namespace TTRider.VSExtensionsImportExport
             }
             catch (Exception ex)
             {
-                output.OutputStringThreadSafe("ERROR: " + ex.Message);
+                output.OutputStringThreadSafe("ERROR: "+ex.Message);
             }
             output.FlushToTaskList();
         }
@@ -192,13 +187,14 @@ namespace TTRider.VSExtensionsImportExport
 
                 output.OutputStringThreadSafe(string.Format("\r\nList Time Stamp (UTC): {0}\r\n", exs.Timestamp));
                 output.OutputStringThreadSafe(string.Format("List Machine Name: {0}\r\n", exs.MachineName));
-
+            
+                // 
                 var vsextm = (IVsExtensionManager)GetService(typeof(SVsExtensionManager));
                 if (vsextm != null)
                 {
                     var installed = vsextm.GetInstalledExtensions().
                         Where(ext => !ext.Header.SystemComponent)
-                        .Select(ext => new ExtensionInfo { Identifier = ext.Header.Identifier });
+                        .Select(ext => new ExtensionInfo{Identifier = ext.Header.Identifier});
 
                     var missing = exs.Extensions.Except(installed, ExtansionInfoEqualityComparer.Default);
 
@@ -209,107 +205,49 @@ namespace TTRider.VSExtensionsImportExport
                     var binding = new WSHttpBinding(SecurityMode.Transport);
                     binding.MessageEncoding = WSMessageEncoding.Text;
                     binding.TextEncoding = Encoding.UTF8;
-
+                    
 
                     var extensionService = new VsIdeServiceClient(binding, endpointAddress);
 
 
-                    var requests = missing.Select(ex => ProcessExtension(ex));
+                    var requests =
+                        missing.Select(ex =>
+                        {
+                            output.OutputStringThreadSafe("Looking up for "+ex.LocalizedName);
+                            return extensionService.SearchReleasesAsync("",
+                                string.Format("(Project.Metadata['VsixId'] = '{0}')", ex.Identifier),
+                                "", null, 0, 10).ContinueWith(t =>
+                                {
+                                    if (t.IsFaulted)
+                                    {
+                                        if (t.Exception!=null)
+                                        {
+                                            foreach (var exc in t.Exception.InnerExceptions)
+                                        {
+                                            output.OutputStringThreadSafe(string.Format("ERROR: ({0}): {1}\r\n", ex.LocalizedName, (exc != null) ? exc.Message : "Unknown"));
+                                        }}
+                                        else
+                                        {
+                                            output.OutputStringThreadSafe(string.Format("ERROR: ({0}): unknown\r\n", ex.LocalizedName));
+                                        }
+                                        return;
+                                    }
 
+                                    
+
+                                });
+                        });
 
                     System.Threading.Tasks.Task.WaitAll(requests.ToArray());
 
                 }
-
+            
             }
             catch (Exception ex)
             {
                 output.OutputStringThreadSafe("ERROR: " + ex.Message);
             }
             output.FlushToTaskList();
-        }
-
-        bool CheckError(ExtensionInfo ex, System.Threading.Tasks.Task t)
-        {
-            if (t.IsFaulted)
-            {
-                var output = GetOutputWindow();
-
-                if (t.Exception != null)
-                {
-                    foreach (var exc in t.Exception.InnerExceptions)
-                    {
-                        output.OutputStringThreadSafe(string.Format("ERROR: ({0}): {1}\r\n", ex.LocalizedName, (exc != null) ? exc.Message : "Unknown"));
-                    }
-                }
-                else
-                {
-                    output.OutputStringThreadSafe(string.Format("ERROR: ({0}): unknown\r\n", ex.LocalizedName));
-                }
-                return false;
-            }
-            return true;
-        }
-
-        async System.Threading.Tasks.Task ProcessExtension(ExtensionInfo ex)
-        {
-            var output = GetOutputWindow();
-
-            try
-            {
-                output.WriteLine("Looking up for {0}", ex.LocalizedName);
-
-                var endpointAddress = new EndpointAddress("https://visualstudiogallery.msdn.microsoft.com/Services/dev12/Extension.svc");
-                var binding = new WSHttpBinding(SecurityMode.Transport);
-                binding.MessageEncoding = WSMessageEncoding.Text;
-                binding.TextEncoding = Encoding.UTF8;
-                var extensionService = new VsIdeServiceClient(binding, endpointAddress);
-
-                var entry = await extensionService.SearchReleasesAsync("",
-                    string.Format("(Project.Metadata['VsixId'] = '{0}')", ex.Identifier),
-                    "Project.Metadata['Relevance'] desc", null, 0, 10);
-
-                string url;
-                var release = entry.Releases.LastOrDefault();
-                if (release == null || release.Project == null || release.Project.Metadata == null)
-                {
-                    output.WriteLine("{0} was not found", ex.LocalizedName);
-                    return;
-                }
-                if (!release.Project.Metadata.TryGetValue("DownloadUrl", out url))
-                {
-                    output.WriteLine("{0} was not found", ex.LocalizedName);
-                    return;
-                }
-
-                output.WriteLine("Downloading {0} from {1}", ex.LocalizedName, url);
-
-                var httpclient = new HttpClient();
-                var response = await httpclient.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-
-
-
-
-            }
-            catch (AggregateException error)
-            {
-                var separator = "    ";
-                var sb = new StringBuilder("ERROR: " + error.Message);
-                sb.AppendLine();
-                foreach (var err in error.InnerExceptions)
-                {
-                    sb.Append(separator);
-                    sb.Append(err.Message);
-                    sb.AppendLine();
-                    separator += "    ";
-                }
-                output.OutputStringThreadSafe(sb.ToString());
-            }
-            catch (Exception error)
-            {
-                output.OutputStringThreadSafe(string.Format("ERROR: {0}\r\n" + error.Message));
-            }
         }
 
         /*
