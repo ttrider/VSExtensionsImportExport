@@ -132,8 +132,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtensionList.cs" />
+    <Compile Include="ExtensionInfo.cs" />
     <Compile Include="Guids.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,7 +146,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="VSExtensionsImportExportPackage.cs" />
+    <Compile Include="ExportExtensionsPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PkgCmdID.cs" />
   </ItemGroup>
@@ -195,12 +196,15 @@
     <None Include="Key.snk" />
   </ItemGroup>
   <ItemGroup>
-    <VSCTCompile Include="VSExtensionsImportExport.vsct">
+    <VSCTCompile Include="ExportExtensions.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Images.png" />
+    <Content Include="Resources\Images.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Package.ico" />
