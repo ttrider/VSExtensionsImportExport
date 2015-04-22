@@ -45,3 +45,6 @@ Temporary Items
 /VSExtensionsImportExport/obj/Debug
 *.suo
 *.user
+/VSExtensionsImportExport/bin/Release
+/VSExtensionsImportExport/obj/Release/TempPE
+/VSExtensionsImportExport/obj/Release
