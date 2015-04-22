@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VSExtensionsImportExport")]
+[assembly: AssemblyTitle("Export Extensions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TTRider, L.L.C.")]
-[assembly: AssemblyProduct("VSExtensionsImportExport")]
+[assembly: AssemblyProduct("Export Extensions")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]   

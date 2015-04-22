@@ -2,87 +2,84 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Microsoft.Internal.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.ExtensionManager;
+using TTRider.ExportExtensions.Service_References.ExtensionService;
 
-namespace TTRider.VSExtensionsImportExport
+namespace TTRider.ExportExtensions
 {
-    [XmlRoot("ExtensionSet", Namespace = "http://schemas.ttrider.com/schemas/visualstudioextensionlist.xsd")]
-    public class ExtensionSet
-    {
-        public ExtensionSet()
-        {
-            this.Extensions = new List<ExtensionInfo>();
-        }
-
-        [XmlArray]
-        [XmlArrayItem("Extension")]
-        public List<ExtensionInfo> Extensions { get; private set; }
-
-        [XmlElement]
-        public string MachineName { get; set; }
-        [XmlElement]
-        public DateTimeOffset Timestamp { get; set; }
-    }
-
     public class ExtensionInfo
     {
         [XmlElement]
         public string Name { get; set; }
-        [XmlElement]
-        public string LocalizedName { get; set; }
-        [XmlElement]
         public string Description { get; set; }
-        [XmlElement]
-        public string LocalizedDescription { get; set; }
-        [XmlElement]
         public string Author { get; set; }
         [XmlElement]
         public string Identifier { get; set; }
-    }
+        [XmlElement]
+        public string DownloadUrl { get; set; }
+        [XmlElement]
+        public string DownloadAs { get; set; }
 
-    public class ExtansionInfoEqualityComparer : IEqualityComparer<ExtensionInfo>
-    {
-        public static ExtansionInfoEqualityComparer Default = new ExtansionInfoEqualityComparer();
-
-        public bool Equals(ExtensionInfo x, ExtensionInfo y)
-        {
-            if (x == null && y == null) return true;
-            if (x == null || y == null) return false;
-            return string.Equals(x.Identifier, y.Identifier, StringComparison.OrdinalIgnoreCase);
-
-        }
-
-        public int GetHashCode(ExtensionInfo obj)
-        {
-            if (obj == null) return 0;
-            if (string.IsNullOrWhiteSpace(obj.Identifier)) return 0;
-            return obj.Identifier.GetHashCode();
-        }
     }
 
     public static class ExtensionSetFactory
     {
-        static readonly XmlSerializer Serializer = new XmlSerializer(typeof(ExtensionSet));
 
-        public static ExtensionSet Read(string filePath)
+        public static TextReader GetScriptPart(string name)
         {
-            if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentNullException("filePath");
-            using (var reader = File.OpenText(filePath))
-            {
-                return Serializer.Deserialize(reader) as ExtensionSet;
-            }
+            return new StreamReader(Assembly.GetExecutingAssembly().GetManifestResourceStream("TTRider.VSExtensionsImportExport.templates."+name));
         }
 
-        public static void Write(string filePath, ExtensionSet extensionSet)
+        public static IEnumerable<ExtensionInfo> GetInstalledExtensions(IVsExtensionManager exm)
         {
-            if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentNullException("filePath");
-            using (var writer = File.CreateText(filePath))
+            return exm.GetInstalledExtensions().
+                Where(ext => !ext.Header.SystemComponent)
+                .Select(ext => new ExtensionInfo
+                {
+                    Name = ext.Header.Name,
+                    Description = ext.Header.Description,
+                    Author = ext.Header.Author,
+                    Identifier = ext.Header.Identifier
+                });
+        }
+
+
+        public static Release DownloadExtensionDetails(ExtensionInfo ex)
+        {
+            var endpointAddress = new EndpointAddress("https://visualstudiogallery.msdn.microsoft.com/Services/dev12/Extension.svc");
+            var binding = new WSHttpBinding(SecurityMode.Transport);
+            binding.MessageEncoding = WSMessageEncoding.Text;
+            binding.TextEncoding = Encoding.UTF8;
+            var extensionService = new VsIdeServiceClient(binding, endpointAddress);
+
+            var entry = extensionService.SearchReleases("",
+                string.Format("(Project.Metadata['VsixId'] = '{0}')", ex.Identifier),
+                "Project.Metadata['Relevance'] desc", null, 0, 10);
+            return entry.Releases.LastOrDefault();
+        }
+
+        public static ExtensionInfo GetExtensionDownloadUrl(ExtensionInfo ex)
+        {
+            var release = DownloadExtensionDetails(ex);
+            string url = null;
+            if (release != null && !release.Project.Metadata.TryGetValue("DownloadUrl", out url))
             {
-                Serializer.Serialize(writer, extensionSet);
+                return ex;
             }
+
+            Uri uri;
+            if (!Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out uri))
+            {
+                return ex;
+            }
+
+            ex.DownloadUrl = uri.AbsoluteUri;
+            ex.DownloadAs = Path.GetFileName(uri.LocalPath);
+            return ex;
         }
     }
 }

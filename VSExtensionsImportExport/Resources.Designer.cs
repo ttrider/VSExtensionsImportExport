@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TTRider.VSExtensionsImportExport {
+namespace TTRider.ExportExtensions {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TTRider.VSExtensionsImportExport {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TTRider.VSExtensionsImportExport.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TTRider.ExportExtensions.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,7 +70,7 @@ namespace TTRider.VSExtensionsImportExport {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Visual Studio Extension List (*.vsixlist.xml)|*.vsx.xml|All Files (*.*)|*.*.
+        ///   Looks up a localized string similar to Extension Package Script (*.cmd)|*.cmd|All Files (*.*)|*.*.
         /// </summary>
         internal static string ImportExportExtensionFilter {
             get {
@@ -88,11 +88,47 @@ namespace TTRider.VSExtensionsImportExport {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading {0} download information.
+        /// </summary>
+        internal static string Loading {
+            get {
+                return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading list of extensions.
+        /// </summary>
+        internal static string LoadingList {
+            get {
+                return ResourceManager.GetString("LoadingList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import/Export Extension List.
         /// </summary>
         internal static string OutputPaneName {
             get {
                 return ResourceManager.GetString("OutputPaneName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting extension information.
+        /// </summary>
+        internal static string ProgressHeader {
+            get {
+                return ResourceManager.GetString("ProgressHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building Extension Package script.
+        /// </summary>
+        internal static string ProgressTitle {
+            get {
+                return ResourceManager.GetString("ProgressTitle", resourceCulture);
             }
         }
     }

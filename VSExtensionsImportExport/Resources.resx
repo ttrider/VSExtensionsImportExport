@@ -121,12 +121,24 @@
     <value>Export Extension List</value>
   </data>
   <data name="ImportExportExtensionFilter" xml:space="preserve">
-    <value>Visual Studio Extension List (*.vsixlist.xml)|*.vsx.xml|All Files (*.*)|*.*</value>
+    <value>Extension Package Script (*.cmd)|*.cmd|All Files (*.*)|*.*</value>
   </data>
   <data name="ImportExtensionList" xml:space="preserve">
     <value>Import Extension List</value>
   </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading {0} download information</value>
+  </data>
+  <data name="LoadingList" xml:space="preserve">
+    <value>Loading list of extensions</value>
+  </data>
   <data name="OutputPaneName" xml:space="preserve">
     <value>Import/Export Extension List</value>
+  </data>
+  <data name="ProgressHeader" xml:space="preserve">
+    <value>Getting extension information</value>
+  </data>
+  <data name="ProgressTitle" xml:space="preserve">
+    <value>Building Extension Package script</value>
   </data>
 </root>

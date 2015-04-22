@@ -8,33 +8,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TTRider.VSExtensionsImportExport.ExtensionService {
-    using System.Runtime.Serialization;
-    using System;
-    
-    
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+
+namespace TTRider.ExportExtensions.Service_References.ExtensionService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IdeCategory", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="IdeCategory", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class IdeCategory : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> ChildrenField;
+        [OptionalField()]
+        private System.Collections.Generic.List<IdeCategory> ChildrenField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool HasMoreField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Guid IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory ParentField;
+        [OptionalField()]
+        private IdeCategory ParentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string TitleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -47,8 +47,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> Children {
+        [DataMember()]
+        public System.Collections.Generic.List<IdeCategory> Children {
             get {
                 return this.ChildrenField;
             }
@@ -60,7 +60,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool HasMore {
             get {
                 return this.HasMoreField;
@@ -73,7 +73,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Guid Id {
             get {
                 return this.IdField;
@@ -86,8 +86,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory Parent {
+        [DataMember()]
+        public IdeCategory Parent {
             get {
                 return this.ParentField;
             }
@@ -99,7 +99,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Title {
             get {
                 return this.TitleField;
@@ -124,17 +124,17 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReleaseQueryResult", Namespace="http://schemas.datacontract.org/2004/07/VsGallery.WebServices")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="ReleaseQueryResult", Namespace="http://schemas.datacontract.org/2004/07/VsGallery.WebServices")]
+    [Serializable()]
     public partial class ReleaseQueryResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Release> ReleasesField;
+        [OptionalField()]
+        private System.Collections.Generic.List<Release> ReleasesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int TotalCountField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -147,8 +147,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Release> Releases {
+        [DataMember()]
+        public System.Collections.Generic.List<Release> Releases {
             get {
                 return this.ReleasesField;
             }
@@ -160,7 +160,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int TotalCount {
             get {
                 return this.TotalCountField;
@@ -185,47 +185,47 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Release", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Release", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class Release : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Nullable<System.DateTime> DateReleasedField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string DescriptionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseFile> FilesField;
+        [OptionalField()]
+        private System.Collections.Generic.List<ReleaseFile> FilesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool IsCurrentReleaseField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool IsDisplayedOnHomePageField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool IsPublicField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.Project ProjectField;
+        [OptionalField()]
+        private Project ProjectField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private double RatingField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int RatingsCountField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int ReviewsCountField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -238,7 +238,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Nullable<System.DateTime> DateReleased {
             get {
                 return this.DateReleasedField;
@@ -251,7 +251,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Description {
             get {
                 return this.DescriptionField;
@@ -264,8 +264,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseFile> Files {
+        [DataMember()]
+        public System.Collections.Generic.List<ReleaseFile> Files {
             get {
                 return this.FilesField;
             }
@@ -277,7 +277,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int Id {
             get {
                 return this.IdField;
@@ -290,7 +290,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool IsCurrentRelease {
             get {
                 return this.IsCurrentReleaseField;
@@ -303,7 +303,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool IsDisplayedOnHomePage {
             get {
                 return this.IsDisplayedOnHomePageField;
@@ -316,7 +316,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool IsPublic {
             get {
                 return this.IsPublicField;
@@ -329,7 +329,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -342,8 +342,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.Project Project {
+        [DataMember()]
+        public Project Project {
             get {
                 return this.ProjectField;
             }
@@ -355,7 +355,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public double Rating {
             get {
                 return this.RatingField;
@@ -368,7 +368,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int RatingsCount {
             get {
                 return this.RatingsCountField;
@@ -381,7 +381,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int ReviewsCount {
             get {
                 return this.ReviewsCountField;
@@ -406,65 +406,65 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Project", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Project", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class Project : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int AffiliateIdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Category> CategoriesField;
+        [OptionalField()]
+        private System.Collections.Generic.List<Category> CategoriesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.DateTime CreatedDateField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.Release CurrentReleaseField;
+        [OptionalField()]
+        private Release CurrentReleaseField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string DescriptionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool DiscussionsEnabledField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool FileReleaseEnabledField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string InitialProjectNameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool IsPublishedField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Collections.Generic.Dictionary<string, string> MetadataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.DateTime ModifiedDateField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Release> ReleasesField;
+        [OptionalField()]
+        private System.Collections.Generic.List<Release> ReleasesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool SourceCodeBrowsingEnabledField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Collections.Generic.List<string> TagsField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string TitleField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private bool WorkItemTrackingEnabledField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -477,7 +477,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int AffiliateId {
             get {
                 return this.AffiliateIdField;
@@ -490,8 +490,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Category> Categories {
+        [DataMember()]
+        public System.Collections.Generic.List<Category> Categories {
             get {
                 return this.CategoriesField;
             }
@@ -503,7 +503,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime CreatedDate {
             get {
                 return this.CreatedDateField;
@@ -516,8 +516,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.Release CurrentRelease {
+        [DataMember()]
+        public Release CurrentRelease {
             get {
                 return this.CurrentReleaseField;
             }
@@ -529,7 +529,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Description {
             get {
                 return this.DescriptionField;
@@ -542,7 +542,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool DiscussionsEnabled {
             get {
                 return this.DiscussionsEnabledField;
@@ -555,7 +555,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool FileReleaseEnabled {
             get {
                 return this.FileReleaseEnabledField;
@@ -568,7 +568,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int Id {
             get {
                 return this.IdField;
@@ -581,7 +581,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string InitialProjectName {
             get {
                 return this.InitialProjectNameField;
@@ -594,7 +594,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool IsPublished {
             get {
                 return this.IsPublishedField;
@@ -607,7 +607,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Collections.Generic.Dictionary<string, string> Metadata {
             get {
                 return this.MetadataField;
@@ -620,7 +620,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime ModifiedDate {
             get {
                 return this.ModifiedDateField;
@@ -633,7 +633,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -646,8 +646,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Release> Releases {
+        [DataMember()]
+        public System.Collections.Generic.List<Release> Releases {
             get {
                 return this.ReleasesField;
             }
@@ -659,7 +659,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool SourceCodeBrowsingEnabled {
             get {
                 return this.SourceCodeBrowsingEnabledField;
@@ -672,7 +672,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Collections.Generic.List<string> Tags {
             get {
                 return this.TagsField;
@@ -685,7 +685,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Title {
             get {
                 return this.TitleField;
@@ -698,7 +698,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public bool WorkItemTrackingEnabled {
             get {
                 return this.WorkItemTrackingEnabledField;
@@ -723,33 +723,33 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReleaseFile", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="ReleaseFile", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class ReleaseFile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.FileAttachment AttachmentField;
+        [OptionalField()]
+        private FileAttachment AttachmentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string DescriptionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int DownloadCountField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Collections.Generic.Dictionary<string, string> MetadataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.Release ParentField;
+        [OptionalField()]
+        private Release ParentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.ReleaseFileType TypeField;
+        [OptionalField()]
+        private ReleaseFileType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -761,8 +761,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.FileAttachment Attachment {
+        [DataMember()]
+        public FileAttachment Attachment {
             get {
                 return this.AttachmentField;
             }
@@ -774,7 +774,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Description {
             get {
                 return this.DescriptionField;
@@ -787,7 +787,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int DownloadCount {
             get {
                 return this.DownloadCountField;
@@ -800,7 +800,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int Id {
             get {
                 return this.IdField;
@@ -813,7 +813,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Collections.Generic.Dictionary<string, string> Metadata {
             get {
                 return this.MetadataField;
@@ -826,8 +826,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.Release Parent {
+        [DataMember()]
+        public Release Parent {
             get {
                 return this.ParentField;
             }
@@ -839,8 +839,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.ReleaseFileType Type {
+        [DataMember()]
+        public ReleaseFileType Type {
             get {
                 return this.TypeField;
             }
@@ -864,20 +864,20 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileAttachment", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="FileAttachment", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class FileAttachment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string FileNameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.DateTime UploadDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -890,7 +890,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FileName {
             get {
                 return this.FileNameField;
@@ -903,7 +903,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int Id {
             get {
                 return this.IdField;
@@ -916,7 +916,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.DateTime UploadDate {
             get {
                 return this.UploadDateField;
@@ -941,17 +941,17 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReleaseFileType", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="ReleaseFileType", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class ReleaseFileType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string DescriptionField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string IdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -964,7 +964,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Description {
             get {
                 return this.DescriptionField;
@@ -977,7 +977,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Id {
             get {
                 return this.IdField;
@@ -1002,23 +1002,23 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/Galleries.Domain.Model")]
+    [Serializable()]
     public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Category> ChildrenField;
+        [OptionalField()]
+        private System.Collections.Generic.List<Category> ChildrenField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int IdField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TTRider.VSExtensionsImportExport.ExtensionService.Category ParentField;
+        [OptionalField()]
+        private Category ParentField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string TitleField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -1031,8 +1031,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.Category> Children {
+        [DataMember()]
+        public System.Collections.Generic.List<Category> Children {
             get {
                 return this.ChildrenField;
             }
@@ -1044,7 +1044,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int Id {
             get {
                 return this.IdField;
@@ -1057,8 +1057,8 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TTRider.VSExtensionsImportExport.ExtensionService.Category Parent {
+        [DataMember()]
+        public Category Parent {
             get {
                 return this.ParentField;
             }
@@ -1070,7 +1070,7 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Title {
             get {
                 return this.TitleField;
@@ -1099,45 +1099,45 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetCategoryTree", ReplyAction="http://tempuri.org/IVsIdeService/GetCategoryTreeResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory GetCategoryTree(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName);
+        IdeCategory GetCategoryTree(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetCategoryTree", ReplyAction="http://tempuri.org/IVsIdeService/GetCategoryTreeResponse")]
-        System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetCategoryTreeAsync(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName);
+        System.Threading.Tasks.Task<IdeCategory> GetCategoryTreeAsync(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetRootCategories", ReplyAction="http://tempuri.org/IVsIdeService/GetRootCategoriesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetRootCategories(string cultureName);
+        System.Collections.Generic.List<IdeCategory> GetRootCategories(string cultureName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetRootCategories", ReplyAction="http://tempuri.org/IVsIdeService/GetRootCategoriesResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory>> GetRootCategoriesAsync(string cultureName);
+        System.Threading.Tasks.Task<List<IdeCategory>> GetRootCategoriesAsync(string cultureName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/SearchReleases", ReplyAction="http://tempuri.org/IVsIdeService/SearchReleasesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult SearchReleases(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take);
+        ReleaseQueryResult SearchReleases(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/SearchReleases", ReplyAction="http://tempuri.org/IVsIdeService/SearchReleasesResponse")]
-        System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult> SearchReleasesAsync(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take);
+        System.Threading.Tasks.Task<ReleaseQueryResult> SearchReleasesAsync(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetRootCategories2", ReplyAction="http://tempuri.org/IVsIdeService/GetRootCategories2Response")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetRootCategories2(System.Collections.Generic.Dictionary<string, string> requestContext);
+        System.Collections.Generic.List<IdeCategory> GetRootCategories2(System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetRootCategories2", ReplyAction="http://tempuri.org/IVsIdeService/GetRootCategories2Response")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory>> GetRootCategories2Async(System.Collections.Generic.Dictionary<string, string> requestContext);
+        System.Threading.Tasks.Task<List<IdeCategory>> GetRootCategories2Async(System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetCategoryTree2", ReplyAction="http://tempuri.org/IVsIdeService/GetCategoryTree2Response")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory GetCategoryTree2(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext);
+        IdeCategory GetCategoryTree2(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetCategoryTree2", ReplyAction="http://tempuri.org/IVsIdeService/GetCategoryTree2Response")]
-        System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetCategoryTree2Async(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext);
+        System.Threading.Tasks.Task<IdeCategory> GetCategoryTree2Async(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/SearchReleases2", ReplyAction="http://tempuri.org/IVsIdeService/SearchReleases2Response")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
-        TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult SearchReleases2(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext);
+        ReleaseQueryResult SearchReleases2(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/SearchReleases2", ReplyAction="http://tempuri.org/IVsIdeService/SearchReleases2Response")]
-        System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult> SearchReleases2Async(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext);
+        System.Threading.Tasks.Task<ReleaseQueryResult> SearchReleases2Async(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVsIdeService/GetCurrentVersionsForVsixList", ReplyAction="http://tempuri.org/IVsIdeService/GetCurrentVersionsForVsixListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(System.Guid), Action="http://galleries.msdn.microsoft.com/faults/generic", Name="guid", Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
@@ -1148,12 +1148,12 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IVsIdeServiceChannel : global::TTRider.VSExtensionsImportExport.ExtensionService.IVsIdeService, System.ServiceModel.IClientChannel {
+    public interface IVsIdeServiceChannel : IVsIdeService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class VsIdeServiceClient : System.ServiceModel.ClientBase<global::TTRider.VSExtensionsImportExport.ExtensionService.IVsIdeService>, global::TTRider.VSExtensionsImportExport.ExtensionService.IVsIdeService {
+    public partial class VsIdeServiceClient : System.ServiceModel.ClientBase<IVsIdeService>, IVsIdeService {
         
         public VsIdeServiceClient() {
         }
@@ -1174,51 +1174,51 @@ namespace TTRider.VSExtensionsImportExport.ExtensionService {
                 base(binding, remoteAddress) {
         }
         
-        public TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory GetCategoryTree(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName) {
+        public IdeCategory GetCategoryTree(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName) {
             return base.Channel.GetCategoryTree(categoryId, level, projectType, templateType, skus, subSkus, templateGroupIds, vsVersions, cultureName);
         }
         
-        public System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetCategoryTreeAsync(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName) {
+        public System.Threading.Tasks.Task<IdeCategory> GetCategoryTreeAsync(System.Guid categoryId, int level, string projectType, string templateType, System.Collections.Generic.List<string> skus, System.Collections.Generic.List<string> subSkus, System.Collections.Generic.List<int> templateGroupIds, System.Collections.Generic.List<int> vsVersions, string cultureName) {
             return base.Channel.GetCategoryTreeAsync(categoryId, level, projectType, templateType, skus, subSkus, templateGroupIds, vsVersions, cultureName);
         }
         
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetRootCategories(string cultureName) {
+        public System.Collections.Generic.List<IdeCategory> GetRootCategories(string cultureName) {
             return base.Channel.GetRootCategories(cultureName);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory>> GetRootCategoriesAsync(string cultureName) {
+        public System.Threading.Tasks.Task<List<IdeCategory>> GetRootCategoriesAsync(string cultureName) {
             return base.Channel.GetRootCategoriesAsync(cultureName);
         }
         
-        public TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult SearchReleases(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take) {
+        public ReleaseQueryResult SearchReleases(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take) {
             return base.Channel.SearchReleases(searchText, whereClause, orderByClause, locale, skip, take);
         }
         
-        public System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult> SearchReleasesAsync(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take) {
+        public System.Threading.Tasks.Task<ReleaseQueryResult> SearchReleasesAsync(string searchText, string whereClause, string orderByClause, System.Nullable<int> locale, System.Nullable<int> skip, System.Nullable<int> take) {
             return base.Channel.SearchReleasesAsync(searchText, whereClause, orderByClause, locale, skip, take);
         }
         
-        public System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetRootCategories2(System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public System.Collections.Generic.List<IdeCategory> GetRootCategories2(System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.GetRootCategories2(requestContext);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory>> GetRootCategories2Async(System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public System.Threading.Tasks.Task<List<IdeCategory>> GetRootCategories2Async(System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.GetRootCategories2Async(requestContext);
         }
         
-        public TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory GetCategoryTree2(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public IdeCategory GetCategoryTree2(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.GetCategoryTree2(categoryId, level, requestContext);
         }
         
-        public System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.IdeCategory> GetCategoryTree2Async(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public System.Threading.Tasks.Task<IdeCategory> GetCategoryTree2Async(System.Guid categoryId, int level, System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.GetCategoryTree2Async(categoryId, level, requestContext);
         }
         
-        public TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult SearchReleases2(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public ReleaseQueryResult SearchReleases2(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.SearchReleases2(searchText, whereClause, orderByClause, skip, take, requestContext);
         }
         
-        public System.Threading.Tasks.Task<TTRider.VSExtensionsImportExport.ExtensionService.ReleaseQueryResult> SearchReleases2Async(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext) {
+        public System.Threading.Tasks.Task<ReleaseQueryResult> SearchReleases2Async(string searchText, string whereClause, string orderByClause, System.Nullable<int> skip, System.Nullable<int> take, System.Collections.Generic.Dictionary<string, string> requestContext) {
             return base.Channel.SearchReleases2Async(searchText, whereClause, orderByClause, skip, take, requestContext);
         }
         

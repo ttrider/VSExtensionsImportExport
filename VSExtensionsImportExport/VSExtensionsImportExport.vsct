@@ -66,19 +66,9 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2"/>
         <Icon guid="guidImages" id="exportExt" />
         <Strings>
-          <ButtonText>Export Extension List</ButtonText>
+          <ButtonText>Export Extensions</ButtonText>
         </Strings>
       </Button>
-
-      <Button guid="guidVSExtensionsImportExportCmdSet" id="cmdidImportExtensionList" priority="0x9011" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_TOOLS_OTHER2"/>
-        <Icon guid="guidImages" id="importExt" />
-        <Strings>
-          <ButtonText>Import Extension List</ButtonText>
-        </Strings>
-      </Button>
-
-
     </Buttons>
    
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->

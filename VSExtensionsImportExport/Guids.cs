@@ -1,8 +1,9 @@
 ﻿// Guids.cs
 // MUST match guids.h
+
 using System;
 
-namespace TTRider.VSExtensionsImportExport
+namespace TTRider.ExportExtensions
 {
     static class GuidList
     {
