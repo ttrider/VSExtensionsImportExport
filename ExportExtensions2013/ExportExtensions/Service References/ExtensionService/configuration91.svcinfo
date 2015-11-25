@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="y59zPrq4NwMnvPIrR4MGrehYHTc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="M9MqfmsuFAXPXmHgxi8KBHtjtYY=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="CustomBinding_IVsIdeService">
       <properties>
@@ -251,10 +251,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_IVsIdeService" contract="ExtensionService.IVsIdeService" bindingType="wsHttpBinding" address="http://co1msdngal97.phx.gbl/Services/dev12/Extension.svc" bindingConfiguration="CustomBinding_IVsIdeService">
+    <endpoint name="CustomBinding_IVsIdeService" contract="ExtensionService.IVsIdeService" bindingType="wsHttpBinding" address="http://co1msdngal98.phx.gbl/Services/dev12/Extension.svc" bindingConfiguration="CustomBinding_IVsIdeService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://co1msdngal97.phx.gbl/Services/dev12/Extension.svc</serializedValue>
+          <serializedValue>http://co1msdngal98.phx.gbl/Services/dev12/Extension.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

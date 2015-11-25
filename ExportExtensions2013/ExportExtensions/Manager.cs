@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.Text;
 using Microsoft.VisualStudio.ExtensionManager;
 using Microsoft.VisualStudio.Shell.Interop;
-using TTRider.ExportExtensions.ExtensionService;
+using TTRider.ExportExtensions.Service_References.ExtensionService;
 
 namespace TTRider.ExportExtensions
 {

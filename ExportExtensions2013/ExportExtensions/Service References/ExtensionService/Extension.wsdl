@@ -320,9 +320,9 @@
   </wsdl:binding>
   <wsdl:service name="Extension">
     <wsdl:port name="CustomBinding_IVsIdeService" binding="tns:CustomBinding_IVsIdeService">
-      <soap12:address location="http://co1msdngal97.phx.gbl/Services/dev12/Extension.svc" />
+      <soap12:address location="http://co1msdngal98.phx.gbl/Services/dev12/Extension.svc" />
       <wsa10:EndpointReference>
-        <wsa10:Address>http://co1msdngal97.phx.gbl/Services/dev12/Extension.svc</wsa10:Address>
+        <wsa10:Address>http://co1msdngal98.phx.gbl/Services/dev12/Extension.svc</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="CustomBinding_IVsIdeService1" binding="tns:CustomBinding_IVsIdeService1">
