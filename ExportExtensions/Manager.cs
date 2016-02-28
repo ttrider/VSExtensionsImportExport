@@ -59,9 +59,15 @@ namespace TTRider.ExportExtensions
                 });
         }
 
-        string CmdEncode(string str)
+        string CmdEncode(string str, bool extended=true)
         {
             var sb = new StringBuilder(str);
+            if (extended) 
+            {
+                sb.Replace("\r", "");
+                sb.Replace("\n", "");
+                sb.Replace("'", "''");
+            }
             sb.Replace(">", "^>");
             sb.Replace("<", "^<");
             sb.Replace("%", "^%");
@@ -183,7 +189,7 @@ namespace TTRider.ExportExtensions
                     var line = ps.ReadLine();
                     while (line != null)
                     {
-                        writer.WriteLine("echo " + CmdEncode(line) + " >> ext.ps1");
+                        writer.WriteLine("echo " + CmdEncode(line, false) + " >> ext.ps1");
                         line = ps.ReadLine();
                     }
 
