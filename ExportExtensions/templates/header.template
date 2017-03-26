@@ -1,8 +1,0 @@
-﻿@echo off
-echo Preparing Powershell Setup script
-
-:GETTEMPNAME
-set TMPDIR=%TMP%\setupVSPackages-%RANDOM%-%TIME:~6,5%.tmp
-if exist "%TMPDIR%" GOTO :GETTEMPNAME  
-mkdir %TMPDIR%
-pushd %TMPDIR%

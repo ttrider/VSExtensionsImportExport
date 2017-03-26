@@ -1,3 +1,0 @@
-﻿powershell -file ext.ps1 -ExecutionPolicy Unrestricted
-popd
-pause
