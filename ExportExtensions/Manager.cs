@@ -6,6 +6,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.Text;
 using Microsoft.VisualStudio.ExtensionManager;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using TTRider.ExportExtensions.ExtensionService;
 
@@ -15,9 +16,15 @@ namespace TTRider.ExportExtensions
     {
         private readonly IVsExtensionManager extensionManager;
         private readonly IVsThreadedWaitDialogFactory dialogFactory;
+        private IVsOutputWindowPane generalPane;
 
         public Manager(IVsExtensionManager extensionManager, IVsThreadedWaitDialogFactory dialogFactory)
         {
+            IVsOutputWindow outWindow = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
+            Guid generalPaneGuid = Microsoft.VisualStudio.VSConstants.GUID_OutWindowDebugPane;
+            outWindow.GetPane(ref generalPaneGuid, out generalPane);
+            generalPane.Activate(); // Brings this pane into view
+
             this.extensionManager = extensionManager;
             this.dialogFactory = dialogFactory;
         }
@@ -55,7 +62,8 @@ namespace TTRider.ExportExtensions
                     Name = ext.Header.Name,
                     Description = ext.Header.Description,
                     Author = ext.Header.Author,
-                    Identifier = ext.Header.Identifier
+                    Identifier = ext.Header.Identifier,
+                    State = ext.State
                 });
         }
 
@@ -94,6 +102,12 @@ namespace TTRider.ExportExtensions
         ExtensionInfo GetExtensionDownloadUrl(ExtensionInfo ex)
         {
             var release = DownloadExtensionDetails(ex);
+            //generalPane.OutputString(ex.Name + "\t" +
+            //    ((release == null) ? "null" : "not null") + "\t" +
+            //    //ex.Description + "\t" +
+            //    ex.Author + "\t" +
+            //    ex.Identifier + "\t" +
+            //    ex.State.ToString() + "\n");
             string url = null;
             if (release != null && !release.Project.Metadata.TryGetValue("DownloadUrl", out url))
             {
@@ -133,8 +147,25 @@ namespace TTRider.ExportExtensions
 
             try
             {
+                //var extensions = this.GetInstalledExtensions();
+
+
+                //var count = 0;
+                //generalPane.OutputString("Short list:\n");
+                //foreach (var extension in extensions)
+                //{
+                //    count++;
+                //    generalPane.OutputString(extension.Name + "\t" +
+                //        //extension.Description + "\t" +
+                //        extension.Author + "\t" +
+                //        extension.Identifier + "\t" +
+                //        extension.State.ToString() + "\n");
+                //}
+                //generalPane.OutputString("Total: " + count + "\n\n");
+                //generalPane.Activate(); // Brings this pane into view
+
                 var extensions = this.GetInstalledExtensions()
-                    .Select(ext =>
+					.Select(ext =>
                     {
                         if (dialog != null)
                         {
