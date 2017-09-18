@@ -31,6 +31,14 @@ namespace TTRider.ExportExtensions
             if (null != mcs)
             {
                 mcs.AddCommand(new MenuCommand(this.manager.ExportExtensions, new CommandID(GuidList.guidVSExtensionsImportExportCmdSet, (int)PkgCmdIDList.cmdidExportExtensionList)));
+                
+                OleMenuCommand menuItem2 = new OleMenuCommand(this.manager.ExportExtensionsTo, new CommandID(GuidList.guidVSExtensionsImportExportCmdSet, (int)PkgCmdIDList.cmdidExportExtensionListTo));
+                menuItem2.ParametersDescription = "p";
+                mcs.AddCommand(menuItem2);
+
+                OleMenuCommand menuItem3 = new OleMenuCommand(this.manager.ExportExtensionsToAndExit, new CommandID(GuidList.guidVSExtensionsImportExportCmdSet, (int)PkgCmdIDList.cmdidExportExtensionListToAndExit));
+                menuItem3.ParametersDescription = "p";
+                mcs.AddCommand(menuItem3);
             }
         }
         #endregion

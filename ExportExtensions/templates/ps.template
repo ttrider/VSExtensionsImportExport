@@ -13,7 +13,7 @@ wget -Uri $url -OutFile $as;
 "Installing '$name' by '$author'"; 
 if ([System.IO.Path]::GetExtension($as) -eq ".vsix" -and $vsxcmd -ne $null)
 {
-    Start-Process $vsxcmd -ArgumentList "/q $as"  -Wait;
+    Start-Process $vsxcmd -ArgumentList "/q `"$as`""  -Wait;
 }
 else
 {

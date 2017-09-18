@@ -6,6 +6,7 @@ using System.Reflection;
 using System.ServiceModel;
 using System.Text;
 using Microsoft.VisualStudio.ExtensionManager;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using TTRider.ExportExtensions.ExtensionService;
 
@@ -15,13 +16,36 @@ namespace TTRider.ExportExtensions
     {
         private readonly IVsExtensionManager extensionManager;
         private readonly IVsThreadedWaitDialogFactory dialogFactory;
+        private IVsOutputWindowPane generalPane;
 
         public Manager(IVsExtensionManager extensionManager, IVsThreadedWaitDialogFactory dialogFactory)
         {
+            IVsOutputWindow outWindow = Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
+            Guid generalPaneGuid = Microsoft.VisualStudio.VSConstants.GUID_OutWindowDebugPane;
+            outWindow.GetPane(ref generalPaneGuid, out generalPane);
+            generalPane.Activate(); // Brings this pane into view
+
             this.extensionManager = extensionManager;
             this.dialogFactory = dialogFactory;
         }
 
+        private void IDEShutDown(EnvDTE.DTE dte)
+        {
+            if (dte != null)
+            {
+                // Add code to dispose of custom objects, save files, 
+                // and perform any clean-up tasks.
+
+                // Stop external process debugging.
+                if (dte.Mode == EnvDTE.vsIDEMode.vsIDEModeDebug)
+                {
+                    dte.Debugger.Stop(true);
+                }
+
+                // Close the DTE object.
+                dte.Quit();
+            }
+        }
 
         internal void ExportExtensions(object sender, EventArgs e)
         {
@@ -46,6 +70,66 @@ namespace TTRider.ExportExtensions
             DoExport(ofd.FileName);
         }
 
+        internal void ExportExtensionsTo(object sender, EventArgs e)
+        {
+            var args = (OleMenuCmdEventArgs)e;
+            if (args.InValue != null && args.InValue.ToString() != "")
+            {
+                var s = args.InValue.ToString();
+                if ((s[0] == '\"') && (s[s.Length - 1] == '\"'))
+                {
+                    s = args.InValue.ToString().Replace("\"", "");
+                }
+                else if ((s[0] == '\'') && (s[s.Length - 1] == '\''))
+                {
+                    s = args.InValue.ToString().Replace("\'", "");
+                }
+                var fileInfo = new FileInfo(s);
+                if ((fileInfo.Directory.ToString() != (new FileInfo("Invalid").Directory.ToString())) &&
+                    (fileInfo.Extension == ".cmd"))
+                {
+                    DoExport(s);
+                }
+
+                return;
+            } else
+            {
+                generalPane.OutputString("No path specified for export.\n");
+                generalPane.Activate();
+            }
+        }
+
+        internal void ExportExtensionsToAndExit(object sender, EventArgs e)
+        {
+            var args = (OleMenuCmdEventArgs)e;
+            if (args.InValue != null && args.InValue.ToString() != "")
+            {
+                var s = args.InValue.ToString();
+                if ((s[0] == '\"') && (s[s.Length - 1] == '\"'))
+                {
+                    s = args.InValue.ToString().Replace("\"", "");
+                }
+                else if ((s[0] == '\'') && (s[s.Length - 1] == '\''))
+                {
+                    s = args.InValue.ToString().Replace("\'", "");
+                }
+                var fileInfo = new FileInfo(s);
+                if ((fileInfo.Directory.ToString() != (new FileInfo("Invalid").Directory.ToString())) &&
+                    (fileInfo.Extension == ".cmd"))
+                {
+                    DoExport(s);
+                    IDEShutDown(Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStu‌​dio.Shell.Interop.SD‌​TE)) as EnvDTE.DTE);
+                }
+
+                return;
+            }
+            else
+            {
+                generalPane.OutputString("No path specified for export.\n");
+                generalPane.Activate();
+            }
+        }
+
         private IEnumerable<ExtensionInfo> GetInstalledExtensions()
         {
             return this.extensionManager.GetInstalledExtensions().
@@ -55,7 +139,8 @@ namespace TTRider.ExportExtensions
                     Name = ext.Header.Name,
                     Description = ext.Header.Description,
                     Author = ext.Header.Author,
-                    Identifier = ext.Header.Identifier
+                    Identifier = ext.Header.Identifier,
+                    State = ext.State
                 });
         }
 
@@ -94,6 +179,12 @@ namespace TTRider.ExportExtensions
         ExtensionInfo GetExtensionDownloadUrl(ExtensionInfo ex)
         {
             var release = DownloadExtensionDetails(ex);
+            //generalPane.OutputString(ex.Name + "\t" +
+            //    ((release == null) ? "null" : "not null") + "\t" +
+            //    //ex.Description + "\t" +
+            //    ex.Author + "\t" +
+            //    ex.Identifier + "\t" +
+            //    ex.State.ToString() + "\n");
             string url = null;
             if (release != null && !release.Project.Metadata.TryGetValue("DownloadUrl", out url))
             {
@@ -133,8 +224,25 @@ namespace TTRider.ExportExtensions
 
             try
             {
+                //var extensions = this.GetInstalledExtensions();
+
+
+                //var count = 0;
+                //generalPane.OutputString("Short list:\n");
+                //foreach (var extension in extensions)
+                //{
+                //    count++;
+                //    generalPane.OutputString(extension.Name + "\t" +
+                //        //extension.Description + "\t" +
+                //        extension.Author + "\t" +
+                //        extension.Identifier + "\t" +
+                //        extension.State.ToString() + "\n");
+                //}
+                //generalPane.OutputString("Total: " + count + "\n\n");
+                //generalPane.Activate(); // Brings this pane into view
+
                 var extensions = this.GetInstalledExtensions()
-                    .Select(ext =>
+					.Select(ext =>
                     {
                         if (dialog != null)
                         {

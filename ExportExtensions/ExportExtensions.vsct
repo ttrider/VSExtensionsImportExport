@@ -69,6 +69,27 @@
           <ButtonText>Export Extensions</ButtonText>
         </Strings>
       </Button>
+
+
+      <Button guid="guidVSExtensionsImportExportCmdSet" id="cmdidExportExtensionListTo" priority="0x9010" type="Button">
+        <Icon guid="guidImages" id="exportExt" />
+        <CommandFlag>AllowParams</CommandFlag>
+        <Strings>
+          <LocCanonicalName>Tools.ExportExtensionsTo</LocCanonicalName>
+          <ButtonText>Export Extensions To...</ButtonText>
+        </Strings>
+      </Button>
+
+
+      <Button guid="guidVSExtensionsImportExportCmdSet" id="cmdidExportExtensionListToAndExit" priority="0x9010" type="Button">
+        <Icon guid="guidImages" id="exportExt" />
+        <CommandFlag>AllowParams</CommandFlag>
+        <Strings>
+          <LocCanonicalName>Tools.ExportExtensionsToAndExit</LocCanonicalName>
+          <ButtonText>Export Extensions To and Exit...</ButtonText>
+        </Strings>
+      </Button>
+      
     </Buttons>
    
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -98,6 +119,10 @@
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdidExportExtensionList" value="0x0100" />
       <IDSymbol name="cmdidImportExtensionList" value="0x0101" />
+      <IDSymbol name="cmdidExportExtensionListTo" value="0x0200" />
+      <IDSymbol name="cmdidImportExtensionListTo" value="0x0201" />
+      <IDSymbol name="cmdidExportExtensionListToAndExit" value="0x0300" />
+      <IDSymbol name="cmdidImportExtensionListToAndExit" value="0x0301" />
     </GuidSymbol>
     
     
