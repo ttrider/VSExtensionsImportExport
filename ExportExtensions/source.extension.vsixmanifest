@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="09F4D959-981C-40CF-AD72-F692910651F1" Version="1.1" Language="en-US" Publisher="TTRider, L.L.C." />
+    <Identity Id="09F4D959-981C-40CF-AD72-F692910651F1" Version="1.2" Language="en-US" Publisher="TTRider, L.L.C." />
     <DisplayName>Export Extensions 2015.1</DisplayName>
     <Description>Provides an ability to Import/Export the list of Visual Studio extensions</Description>
     <Tags>Visual Studio;Extensions</Tags>
