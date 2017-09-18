@@ -29,6 +29,23 @@ namespace TTRider.ExportExtensions
             this.dialogFactory = dialogFactory;
         }
 
+        private void IDEShutDown(EnvDTE.DTE dte)
+        {
+            if (dte != null)
+            {
+                // Add code to dispose of custom objects, save files, 
+                // and perform any clean-up tasks.
+
+                // Stop external process debugging.
+                if (dte.Mode == EnvDTE.vsIDEMode.vsIDEModeDebug)
+                {
+                    dte.Debugger.Stop(true);
+                }
+
+                // Close the DTE object.
+                dte.Quit();
+            }
+        }
 
         internal void ExportExtensions(object sender, EventArgs e)
         {
@@ -51,6 +68,66 @@ namespace TTRider.ExportExtensions
             }
 
             DoExport(ofd.FileName);
+        }
+
+        internal void ExportExtensionsTo(object sender, EventArgs e)
+        {
+            var args = (OleMenuCmdEventArgs)e;
+            if (args.InValue != null && args.InValue.ToString() != "")
+            {
+                var s = args.InValue.ToString();
+                if ((s[0] == '\"') && (s[s.Length - 1] == '\"'))
+                {
+                    s = args.InValue.ToString().Replace("\"", "");
+                }
+                else if ((s[0] == '\'') && (s[s.Length - 1] == '\''))
+                {
+                    s = args.InValue.ToString().Replace("\'", "");
+                }
+                var fileInfo = new FileInfo(s);
+                if ((fileInfo.Directory.ToString() != (new FileInfo("Invalid").Directory.ToString())) &&
+                    (fileInfo.Extension == ".cmd"))
+                {
+                    DoExport(s);
+                }
+
+                return;
+            } else
+            {
+                generalPane.OutputString("No path specified for export.\n");
+                generalPane.Activate();
+            }
+        }
+
+        internal void ExportExtensionsToAndExit(object sender, EventArgs e)
+        {
+            var args = (OleMenuCmdEventArgs)e;
+            if (args.InValue != null && args.InValue.ToString() != "")
+            {
+                var s = args.InValue.ToString();
+                if ((s[0] == '\"') && (s[s.Length - 1] == '\"'))
+                {
+                    s = args.InValue.ToString().Replace("\"", "");
+                }
+                else if ((s[0] == '\'') && (s[s.Length - 1] == '\''))
+                {
+                    s = args.InValue.ToString().Replace("\'", "");
+                }
+                var fileInfo = new FileInfo(s);
+                if ((fileInfo.Directory.ToString() != (new FileInfo("Invalid").Directory.ToString())) &&
+                    (fileInfo.Extension == ".cmd"))
+                {
+                    DoExport(s);
+                    IDEShutDown(Microsoft.VisualStudio.Shell.Package.GetGlobalService(typeof(Microsoft.VisualStu‌​dio.Shell.Interop.SD‌​TE)) as EnvDTE.DTE);
+                }
+
+                return;
+            }
+            else
+            {
+                generalPane.OutputString("No path specified for export.\n");
+                generalPane.Activate();
+            }
         }
 
         private IEnumerable<ExtensionInfo> GetInstalledExtensions()
