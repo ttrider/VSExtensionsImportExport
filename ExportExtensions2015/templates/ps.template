@@ -1,0 +1,22 @@
+﻿$vsxcmd = $null;
+function FindVSIX() { foreach ($ver in (16,15,14,12)) { $_; if (Test-Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\$ver.0"){
+$installDir = (Get-ItemProperty HKLM:\SOFTWARE\Wow6432Node\Microsoft\VisualStudio\$ver.0).InstallDir
+$vsix = "$installDir\VSIXInstaller.exe"
+if (Test-Path $vsix){ $script:vsxcmd = Resolve-Path $vsix; return;}}}}
+. FindVSIX;
+foreach ($e in $ext ) { $name = $e.Name;
+$author = $e.Author; 
+$url = $e.DownloadUrl; 
+$as = '.\'+$e.DownloadAs; 
+"Downloading '$name' by '$author'"; 
+wget -Uri $url -OutFile $as; 
+"Installing '$name' by '$author'"; 
+if ([System.IO.Path]::GetExtension($as) -eq ".vsix" -and $vsxcmd -ne $null)
+{
+    Start-Process $vsxcmd -ArgumentList "/q $as"  -Wait;
+}
+else
+{
+    & $as; 
+}
+}; 
